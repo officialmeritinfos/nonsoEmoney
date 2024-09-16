@@ -30,12 +30,12 @@ class RecoverPassword extends Controller
     {
         $web = GeneralSetting::find(1);
         $validator = Validator::make($request->input(),[
-            'email'=>['required','string','exists:users,username'],
+            'email'=>['required','string','exists:users,email'],
         ],[],['email'=>'Username']);
         if ($validator->fails()){
             return back()->with('errors',$validator->errors());
         }
-        $user = User::where('username',$request->input('email'))->first();
+        $user = User::where('email',$request->input('email'))->first();
 
         //SendRecoveryMail::dispatch($user);
 

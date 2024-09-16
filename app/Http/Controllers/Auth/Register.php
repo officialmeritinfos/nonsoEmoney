@@ -36,7 +36,7 @@ class Register extends Controller
         $web = GeneralSetting::find(1);
         $validator = Validator::make($request->input(),[
             'name'=>['required','max:255'],
-            'email'=>['required','email'],
+            'email'=>['required','email','unique:users,email'],
             'username'=>['required','max:100','unique:users,username'],
             'password'=>['required','string'],
             'referral'=>['nullable','exists:users,username'],

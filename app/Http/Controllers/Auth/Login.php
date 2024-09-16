@@ -34,7 +34,7 @@ class Login extends Controller
     {
         $web = GeneralSetting::where('id',1)->first();
         $validator = Validator::make($request->input(),[
-            'email'=>['required','string','exists:users,username'],
+            'email'=>['required','string','exists:users,email'],
             'password'=>['required']
         ],[],['email'=>'Username']);
 
@@ -43,7 +43,7 @@ class Login extends Controller
         }
         $input = $validator->validated();
         //check if the login checked out
-        if(Auth::attempt(['username' => $request->email, 'password' => $request->password])){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             //is user active
             $user = Auth::user();
             if($user->status !=1)return back()->with('error', 'Account is inactive');
@@ -81,7 +81,7 @@ class Login extends Controller
             User::where('id',$user->id)->update($dataUser);//update user
             return redirect($url)->with('info',$message);
         }
-        return back()->with('error','Username and Password combination is wrong');
+        return back()->with('error','Email and Password combination is wrong');
     }
     public function processTwoFactor($email,$hash,Request $request)
     {
