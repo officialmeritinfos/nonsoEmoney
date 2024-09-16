@@ -11,6 +11,7 @@ use App\Models\GeneralSetting;
 use App\Models\Investment;
 use App\Models\Package;
 use App\Models\ReturnType;
+use App\Models\Service;
 use App\Models\User;
 use App\Notifications\InvestmentMail;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class Investments extends Controller
         return view('user.investments',$dataView);
     }
 
-    public function newInvestment()
+    public function newInvestmentIndex()
     {
         $web = GeneralSetting::find(1);
         $user = Auth::user();
@@ -44,10 +45,30 @@ class Investments extends Controller
         $dataView = [
             'web'=>$web,
             'user'=>$user,
-            'pageName'=>'New Deposit',
             'siteName'=>$web->name,
-            'packages'=>Package::where('status',1)->get(),
+            'pageName'  => 'Flexible Packages for Everyone',
+            'services'  => Service::orderBy('title','asc')->where('status',1)->get()
+        ];
+
+        return view('user.plans',$dataView);
+    }
+
+
+    public function newInvestment($id)
+    {
+        $web = GeneralSetting::find(1);
+        $user = Auth::user();
+
+        $service = Service::where('id',$id)->first();
+
+        $dataView = [
+            'web'=>$web,
+            'user'=>$user,
+            'pageName'  => $service->title.' Plans',
+            'packages'  => Package::where('service',$id)->get(),
+            'service'   => $service,
             'coins'=>Coin::where('status',1)->get(),
+            'siteName'  =>$web->name
         ];
 
         return view('user.new_investments',$dataView);
@@ -84,6 +105,9 @@ class Investments extends Controller
         if (empty($packageExists)){
             return back()->with('error','Selected Package is invalid');
         }
+
+
+        $serviceExists = Service::where('id',$packageExists->service)->first();
 
         //check if amount matches
         if ($packageExists->isUnlimited !=1){
@@ -140,7 +164,7 @@ class Investments extends Controller
             'nextReturn'=>$nextReturn,'currentReturn'=>0,'returnType'=>$returnType->id,
             'numberOfReturns'=>$packageExists->numberOfReturns,'status'=>$status,'duration'=>$packageExists->Duration,
             'package'=>$packageExists->id,
-            'wallet'=>$coinExists->address,'asset'=>$coinExists->asset
+            'wallet'=>$coinExists->address,'asset'=>$coinExists->asset,'service'=>$serviceExists->title
         ];
 
         $investment = Investment::create($dataInvestment);

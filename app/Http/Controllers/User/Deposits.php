@@ -35,6 +35,7 @@ class Deposits extends Controller
         return view('user.deposits',$dataView);
     }
 
+
     public function newDeposit()
     {
         $web = GeneralSetting::find(1);

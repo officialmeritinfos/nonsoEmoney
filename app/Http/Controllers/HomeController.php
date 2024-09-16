@@ -49,19 +49,7 @@ class HomeController extends Controller
 
         return view('home.about',$dataView);
     }
-    public function plans()
-    {
-        $web = GeneralSetting::where('id',1)->first();
 
-        $dataView = [
-            'siteName'  => $web->name,
-            'web'       => $web,
-            'pageName'  => 'Packages',
-            'packages'  => Package::where('status',1)->get()
-        ];
-
-        return view('home.plans',$dataView);
-    }
     public function terms()
     {
         $web = GeneralSetting::where('id',1)->first();
@@ -335,6 +323,35 @@ class HomeController extends Controller
 
         return back()->with('success','Calculation sent to your mail');
 
+    }
+    public function plans()
+    {
+        $web = GeneralSetting::where('id',1)->first();
+
+        $dataView = [
+            'siteName'  => $web->name,
+            'web'       => $web,
+            'pageName'  => 'Flexible Packages for Everyone',
+            'services'  => Service::orderBy('title','asc')->where('status',1)->get()
+        ];
+
+        return view('home.plans',$dataView);
+    }
+    public function planDetails($id)
+    {
+        $web = GeneralSetting::where('id',1)->first();
+
+        $service = Service::where('id',$id)->first();
+
+        $dataView = [
+            'siteName'  => $web->name,
+            'web'       => $web,
+            'pageName'  => $service->title.' Plans',
+            'packages'  => Package::where('service',$id)->get(),
+            'service'   => $service
+        ];
+
+        return view('home.plan_detail',$dataView);
     }
 }
 

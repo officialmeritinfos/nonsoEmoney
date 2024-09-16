@@ -2,6 +2,7 @@
 namespace App\Defaults;
 
 use App\Models\InvestmentReturn;
+use App\Models\Package;
 use App\Models\ReturnType;
 use App\Models\Service;
 use App\Models\User;
@@ -67,5 +68,14 @@ class Custom{
     public function getSectors()
     {
         return Service::where('status',1)->where('isSector',1)->get();
+    }
+    public function getPackagesByService($id)
+    {
+        return Package::where(['service'=>$id,'status'=>1])->get();
+    }
+
+    public function getPlanNumberService($id)
+    {
+        return Package::where('service',$id)->get();
     }
 }

@@ -50,3 +50,7 @@ Route::get('agriculture',[HomeController::class,'agriculture']);
 //Calculate return
 Route::post('calculate-return',[HomeController::class,'calculateReturn'])
     ->name('calculate.return');
+
+
+Route::get('plans/{id}/details',[HomeController::class,'planDetails'])
+->name('plan_details');
