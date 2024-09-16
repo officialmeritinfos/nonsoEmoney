@@ -57,7 +57,8 @@ class Withdrawals extends Controller
             'amount'=>['required','numeric'],
             'asset'=>['required','alpha_dash'],
             'account'=>['required','numeric'],
-            'wallet'=>['required','string']
+            'wallet'=>['required','string'],
+            'paymentMethod'=>['required','string']
         ]);
 
         if ($validator->fails()){
@@ -97,7 +98,7 @@ class Withdrawals extends Controller
         $ref = $this->generateId('withdrawals','reference',10);
         $data=[
             'user'=>$user->id,'reference'=>$ref,'amount'=>$input['amount'],'asset'=>$input['asset'],
-            'details'=>$input['wallet']
+            'details'=>$input['wallet'],'paymentMethod'=>$input['paymentMethod']
         ];
 
         $withdrawal = Withdrawal::create($data);
