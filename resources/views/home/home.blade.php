@@ -341,7 +341,7 @@
 <!-- End Free Quote Area -->
 
 <!-- Start Blog Area -->
-<div class="blog-area pt-100 pb-70">
+{{-- <div class="blog-area pt-100 pb-70">
     <div class="container">
         <div class="section-title">
             <span class="sub-title">Latest Transactions</span>
@@ -397,7 +397,7 @@
 
         </div>
     </div>
-    </section>
+    </section> --}}
     <!-- End News One -->
 
 

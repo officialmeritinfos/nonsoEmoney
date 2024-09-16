@@ -314,7 +314,7 @@
         var plan = listPlans[Math.floor(Math.random() * listPlans.length)];
         var msg = 'While you are still contemplating ,an investor from <b>' + country + '</b> ' +
             'just traded with <a href="javascript:void(0);" onclick="javascript:void(0);">' + plan + ' .</a>';
-        $(".notifier .txt").html(msg);
+        $(".notifier .txt")(msg);
         $(".notifier").stop(true).fadeIn(300);
         window.setTimeout(function() {
             $(".notifier").stop(true).fadeOut(300);
