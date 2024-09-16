@@ -136,29 +136,29 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 col-sm-3 col-md-3 col-6">
                 <div class="single-funfacts-box">
-                    <h3><span class="odometer" data-count="40">00</span><span class="sign">K+</span></h3>
-                    <p>Investors</p>
+                    <h3><span class="odometer" data-count="1">00</span><span class="sign">M+</span></h3>
+                    <p>Trader Accounts</p>
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-3 col-md-3 col-6">
                 <div class="single-funfacts-box">
-                    <h3><span class="odometer" data-count="100">00</span><span class="sign">M+</span></h3>
-                    <p>Investments</p>
+                    <h3><span class="odometer" data-count="30">00</span><span class="sign">M+</span></h3>
+                    <p>Monthly Transaction</p>
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-3 col-md-3 col-6">
                 <div class="single-funfacts-box">
-                    <h3><span class="odometer" data-count="90">00</span><span class="sign">M+</span></h3>
-                    <p>Payouts Made</p>
+                    <h3><span class="odometer" data-count="16">00</span><span class="sign">M+</span></h3>
+                    <p>Average monthly payouts</p>
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-3 col-md-3 col-6">
                 <div class="single-funfacts-box">
-                    <h3><span class="odometer" data-count="108">00</span><span class="sign">+</span></h3>
-                    <p>Expert Staff</p>
+                    <h3><span class="odometer" data-count="211">00</span><span class="sign">M+</span></h3>
+                    <p>Monthly trade turnover</p>
                 </div>
             </div>
         </div>
