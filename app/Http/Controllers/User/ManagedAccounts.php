@@ -57,11 +57,11 @@ class ManagedAccounts extends Controller
         $duration = ManageAccountDuration::where('id',$input['subDuration'])->first();
 
         $amountToPay = $duration->amount;
-        if ($amountToPay >$user->balance){
+        if ($amountToPay >$user->profit){
             return back()->with('error','Insufficient balance');
         }
 
-        $user->balance = $user->balance-$duration->amount;
+        $user->profit = $user->profit-$duration->amount;
 
         $account = ManageAccount::create([
             'user'=>$user->id,
