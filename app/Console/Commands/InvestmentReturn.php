@@ -101,7 +101,7 @@ class InvestmentReturn extends Command
                             ";
                             //send mail to user
                             //SendInvestmentNotification::dispatch()
-                            $user->notify(new InvestmentMail($user,$userMessage,'Investment Completion'));
+                            // $user->notify(new InvestmentMail($user,$userMessage,'Investment Completion'));
                             $admin = User::where('is_admin',1)->first();
                             //send mail to Admin
                             if (!empty($admin)){
@@ -110,7 +110,7 @@ class InvestmentReturn extends Command
                                     <b>".$investment->reference."</b> has completed and returns credited to profit balance.
                                 ";
                                 //SendInvestmentNotification::dispatch();
-                                $admin->notify(new InvestmentMail($admin,$adminMessage,'Investment completion'));
+                                // $admin->notify(new InvestmentMail($admin,$adminMessage,'Investment completion'));
                             }
                         }
 
