@@ -99,7 +99,7 @@
             <div class="container">
                 <div class="enry-responsive-menu">
                     <div class="logo">
-                        <a href="{{url('/')}}"><img src="{{asset('home/images/'.$web->logo)}}" style="width: 100px;"
+                        <a href="{{url('/')}}"><img src="{{asset('home/images/'.$web->logo)}}" style="width: 60px;"
                                 alt="logo"></a>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('home/images/'.$web->logo)}}"
-                            style="width: 100px;" alt="logo"></a>
+                            style="width: 80px;" alt="logo"></a>
 
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
